@@ -19,6 +19,13 @@ def define_posicoes(linha,coluna,orientacao,tamanho):
 #  se é vertical ou horizontal e o tamanho
 
 def preenche_frota (frota, nome_navio ,  linha, coluna, orientacao,tamanho):
-    frota[nome_navio]= [define_posicoes(linha,coluna,orientacao,tamanho)]
+    if nome_navio in frota:
+        frota[nome_navio].append(define_posicoes(linha,coluna,orientacao,tamanho))
+    else:
+        frota[nome_navio]= [define_posicoes(linha,coluna,orientacao,tamanho)]
     return frota
+
+#funcao para armazenar os navios e suas respectivas posicoes, usando a funcao define_posicoes
+
+
 
