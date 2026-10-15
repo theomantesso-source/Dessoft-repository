@@ -36,8 +36,55 @@ def faz_jogada (tabuleiro, linha, coluna):
 
 # funcao que retorna se o barco foi acertado ou nao pelo adversario
 
+def posiciona_frota(frota):
+    i=0
+    linha= [0] * 10 
+    tabuleiro=[]
+    while i < 10: 
+        tabuleiro.append(linha)
+        i+=1
+        return tabuleiro
+
+    for nome_navio in frota:
+        f=0
+        lista_navio= frota[nome_navio]
+        while f < len(lista_navio):
+            a=0
+            while a < len(lista_navio[f]):
+                linha = lista_navio[f][a][0]
+                coluna = lista_navio[f][a][1]
+                tabuleiro[linha][coluna]= 1
+                a+=1
+            f+=1
+
+    return tabuleiro
+
+frota = {
+    "porta-aviões":[
+      [[1,5],[1,6],[1,7],[1,8]]
+    ],
+    "navio-tanque":[
+      [[6,1],[6,2],[6,3]],
+      [[4,7],[5,7],[6,7]]
+    ],
+    "contratorpedeiro":[
+      [[1,1],[2,1]],
+      [[2,3],[3,3]],
+      [[9,1],[9,2]]
+    ],
+    "submarino": [
+      [[0,3]],
+      [[4,5]],
+      [[8,9]],
+      [[8,4]]
+    ],
+}
+resultado = posiciona_frota(frota)
+print(resultado)
+
 
     
+
 
 
 
