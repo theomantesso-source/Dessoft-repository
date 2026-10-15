@@ -17,3 +17,8 @@ def define_posicoes(linha,coluna,orientacao,tamanho):
 
 #funcao feita para definir as posicoes do navio na grade, mostra o ponto inicial de linha e coluna,
 #  se é vertical ou horizontal e o tamanho
+
+def preenche_frota (frota, nome_navio ,  linha, coluna, orientacao,tamanho):
+    frota[nome_navio]= [define_posicoes(linha,coluna,orientacao,tamanho)]
+    return frota
+
