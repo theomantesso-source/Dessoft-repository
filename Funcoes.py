@@ -81,3 +81,18 @@ def afundados(dicio_navios,tabuleiro):
 # funcao para descobrir os atuais navios afundados, recebe um dicionario de navios e a situacao atual do navio
 # e retorna quantos navios estao afundados
 
+def posicao_valida(dicio_navios,linha,coluna,orientacao,tamanho):
+    if coluna>9 or linha>9:
+        return False
+    lista = define_posicoes(linha,coluna,orientacao,tamanho)
+    for y in lista:
+        if any(numero>9 for numero in y) == True:
+            return False
+
+    for posicao in dicio_navios.values():
+        for navios in posicao:
+            for navio in navios:
+                if navio in lista:
+                    return False
+
+    return True
