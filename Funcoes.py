@@ -78,3 +78,6 @@ def afundados(dicio_navios,tabuleiro):
 
     return navio_afundado
 
+# funcao para descobrir os atuais navios afundados, recebe um dicionario de navios e a situacao atual do navio
+# e retorna quantos navios estao afundados
+
