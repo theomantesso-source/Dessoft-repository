@@ -99,3 +99,4 @@ def posicao_valida(dicio_navios,linha,coluna,orientacao,tamanho):
 
 # para ver se o navio que será posicionado pode ser posicionado, ou seja, se cabe no tabueiro 
 # e se nao tem nenhum barco na posicao desejada
+
