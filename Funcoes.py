@@ -59,32 +59,22 @@ def posiciona_frota(frota):
 
     return tabuleiro
 
-frota = {
-    "porta-aviões":[
-      [[1,5],[1,6],[1,7],[1,8]]
-    ],
-    "navio-tanque":[
-      [[6,1],[6,2],[6,3]],
-      [[4,7],[5,7],[6,7]]
-    ],
-    "contratorpedeiro":[
-      [[1,1],[2,1]],
-      [[2,3],[3,3]],
-      [[9,1],[9,2]]
-    ],
-    "submarino": [
-      [[0,3]],
-      [[4,5]],
-      [[8,9]],
-      [[8,4]]
-    ],
-}
-resultado = posiciona_frota(frota)
-print(resultado)
+def afundados(dicio_navios,tabuleiro):
+    navio_afundado = 0
+    for navio,posicao in dicio_navios.items(): 
+        i = 0 
+        while i<len(posicao):
+            f = 0 
+            contagem = 0 
+            while f<len(posicao[i]):
+                x = posicao[i][f][0]
+                y = posicao[i][f][1]
+                if tabuleiro[x][y] == "X":
+                    contagem+=1
+                f+=1
+            if contagem == f:
+                navio_afundado+=1
+            i+=1
 
-
-    
-
-
-
+    return navio_afundado
 
