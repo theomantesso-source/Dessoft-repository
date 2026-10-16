@@ -38,9 +38,9 @@ def faz_jogada (tabuleiro, linha, coluna):
 
 def posiciona_frota(frota):
     i=0
-    linha= [0] * 10 
     tabuleiro=[]
     while i < 10: 
+        linha= [0] * 10 
         tabuleiro.append(linha)
         i+=1
         return tabuleiro
