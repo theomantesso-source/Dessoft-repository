@@ -1,7 +1,6 @@
-from Funcoes import posicao_valida 
-from Funcoes import define_posicoes
-from Funcoes import preenche_frota
-
+from funcoes import posicao_valida 
+from funcoes import define_posicoes
+from funcoes import preenche_frota
 
 
 frota = {
