@@ -29,9 +29,9 @@ def preenche_frota (frota, nome_navio ,  linha, coluna, orientacao,tamanho):
 
 def faz_jogada (tabuleiro, linha, coluna):
     if tabuleiro[linha][coluna] == 1:
-          tabuleiro[linha][coluna] == 'X'
+          tabuleiro[linha][coluna] = 'X'
     else:
-         tabuleiro[linha][coluna] == '-'
+         tabuleiro[linha][coluna] = '-'
     return tabuleiro
 
 # funcao que retorna se o barco foi acertado ou nao pelo adversario
@@ -43,7 +43,6 @@ def posiciona_frota(frota):
         linha= [0] * 10 
         tabuleiro.append(linha)
         i+=1
-        return tabuleiro
 
     for nome_navio in frota:
         f=0
@@ -100,3 +99,13 @@ def posicao_valida(dicio_navios,linha,coluna,orientacao,tamanho):
 # para ver se o navio que será posicionado pode ser posicionado, ou seja, se cabe no tabueiro 
 # e se nao tem nenhum barco na posicao desejada
 
+def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
+    texto = ''
+    texto += '   0  1  2  3  4  5  6  7  8  9         0  1  2  3  4  5  6  7  8  9\n'
+    texto += '_______________________________      _______________________________\n'
+
+    for linha in range(len(tabuleiro_jogador)):
+        jogador_info = '  '.join([str(item) for item in tabuleiro_jogador[linha]])
+        oponente_info = '  '.join([info if str(info) in 'X-' else '0' for info in tabuleiro_oponente[linha]])
+        texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
+    return texto

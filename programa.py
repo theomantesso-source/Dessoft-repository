@@ -1,7 +1,31 @@
 from funcoes import posicao_valida 
 from funcoes import define_posicoes
 from funcoes import preenche_frota
+from funcoes import posiciona_frota
+from funcoes import monta_tabuleiros
+from funcoes import faz_jogada
+from funcoes import afundados
 
+frota_oponente = {
+    'porta-aviões': [
+        [[9, 1], [9, 2], [9, 3], [9, 4]]
+    ],
+    'navio-tanque': [
+        [[6, 0], [6, 1], [6, 2]],
+        [[4, 3], [5, 3], [6, 3]]
+    ],
+    'contratorpedeiro': [
+        [[1, 6], [1, 7]],
+        [[0, 5], [1, 5]],
+        [[3, 6], [3, 7]]
+    ],
+    'submarino': [
+        [[2, 7]],
+        [[0, 6]],
+        [[9, 7]],
+        [[7, 6]]
+    ]
+}
 
 frota = {
     "porta-aviões":[],
@@ -36,7 +60,33 @@ for navio in frota.keys():
             preenche_frota(frota,navio,linha,coluna,orientacao,tamanho)
             i+=1
 
-print(frota)
-
 #Até aqui feito o programa para perguntar as frotas(Linha, Coluna e Direcao), verificar se pode ser colocada no
 # local pedido e colocalas, fazendo isso para todas as frotas 
+
+tabuleiro_jogador = posiciona_frota(frota)
+tabuleiro_oponente = posiciona_frota(frota_oponente)
+print(monta_tabuleiros(tabuleiro_jogador,tabuleiro_oponente))
+tentativas = []
+continuar = True
+while continuar == True:
+    linha = int(input("Jogador, qual linha deseja atacar?"))
+    while linha<0 or linha>9:
+        print("Linha inválida!")
+        linha = int(input("Jogador, qual linha deseja atacar?"))
+    coluna = int(input("Jogador, qual coluna deseja atacar?"))
+    while coluna<0 or coluna>9:
+        print("Coluna inválida!")
+        coluna = int(input("Jogador, qual linha deseja atacar?"))
+    tentativa_atual = [linha,coluna]
+    if tentativa_atual not in tentativas : 
+        tentativas.append(tentativa_atual)
+        tabuleiro_oponente = faz_jogada(tabuleiro_oponente,linha,coluna)
+        print(monta_tabuleiros(tabuleiro_jogador,tabuleiro_oponente))
+        Quant_afundados = afundados(frota_oponente,tabuleiro_oponente)
+    else:
+        print(f"A posição linha {linha} e coluna {coluna} já foi informada anteriormente!")
+
+    if Quant_afundados == len(frota_oponente.keys()):
+        print('Parabéns! Você derrubou todos os navios do seu oponente!')
+        break
+
