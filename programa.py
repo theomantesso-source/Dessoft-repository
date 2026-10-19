@@ -41,4 +41,3 @@ print(frota)
 
 #Até aqui feito o programa para perguntar as frotas(Linha, Coluna e Direcao), verificar se pode ser colocada no
 # local pedido e colocalas, fazendo isso para todas as frotas 
-
