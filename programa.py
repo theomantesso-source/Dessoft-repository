@@ -109,4 +109,3 @@ while continuar == True:
 
     if acesso == True:
         print(monta_tabuleiros(tabuleiro_jogador,tabuleiro_oponente))
-
