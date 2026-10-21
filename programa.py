@@ -88,6 +88,7 @@ while continuar == True:
         acesso = True
     else:
         print(f"A posição linha {linha} e coluna {coluna} já foi informada anteriormente!")
+        continue
 
     if Quant_afundados == 10:
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
@@ -99,11 +100,9 @@ while continuar == True:
 
     tentativas_oponente.append(tentativa_atual_oponente)
     tabuleiro_jogador = faz_jogada(tabuleiro_jogador,tentativa_atual_oponente[0],tentativa_atual_oponente[1])
-    if tabuleiro_jogador[tentativa_atual_oponente[0]][tentativa_atual_oponente[1]] == "X":
-        print(f'Seu oponente está atacando na linha {tentativa_atual_oponente[0]} e coluna {tentativa_atual_oponente[1]}')
-    
+    print(f'Seu oponente está atacando na linha {tentativa_atual_oponente[0]} e coluna {tentativa_atual_oponente[1]}')
+
     Quant_afundados_oponente = afundados(frota,tabuleiro_jogador)
-    
     if Quant_afundados_oponente == 10:
         print('Xi! O oponente derrubou toda a sua frota =(')
         break
