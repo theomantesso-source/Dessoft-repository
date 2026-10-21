@@ -69,6 +69,7 @@ print(monta_tabuleiros(tabuleiro_jogador,tabuleiro_oponente))
 tentativas = []
 continuar = True
 while continuar == True:
+    acesso = False
     linha = int(input("Jogador, qual linha deseja atacar?"))
     while linha<0 or linha>9:
         print("Linha inválida!")
@@ -76,17 +77,21 @@ while continuar == True:
     coluna = int(input("Jogador, qual coluna deseja atacar?"))
     while coluna<0 or coluna>9:
         print("Coluna inválida!")
-        coluna = int(input("Jogador, qual linha deseja atacar?"))
+        coluna = int(input("Jogador, qual coluna deseja atacar?"))
     tentativa_atual = [linha,coluna]
     if tentativa_atual not in tentativas : 
         tentativas.append(tentativa_atual)
         tabuleiro_oponente = faz_jogada(tabuleiro_oponente,linha,coluna)
-        print(monta_tabuleiros(tabuleiro_jogador,tabuleiro_oponente))
         Quant_afundados = afundados(frota_oponente,tabuleiro_oponente)
+        acesso = True
     else:
         print(f"A posição linha {linha} e coluna {coluna} já foi informada anteriormente!")
 
-    if Quant_afundados == len(frota_oponente.keys()):
+    if Quant_afundados == 10:
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
         break
 
+    if acesso == True:
+        print(monta_tabuleiros(tabuleiro_jogador,tabuleiro_oponente))
+
+    #questao 8, no qual apenas o jogador joga contra o oponente, sem o oponente contra-atacar
