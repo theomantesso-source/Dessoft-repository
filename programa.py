@@ -5,6 +5,7 @@ from funcoes import posiciona_frota
 from funcoes import monta_tabuleiros
 from funcoes import faz_jogada
 from funcoes import afundados
+import random
 
 frota_oponente = {
     'porta-aviões': [
@@ -67,6 +68,7 @@ tabuleiro_jogador = posiciona_frota(frota)
 tabuleiro_oponente = posiciona_frota(frota_oponente)
 print(monta_tabuleiros(tabuleiro_jogador,tabuleiro_oponente))
 tentativas = []
+tentativas_oponente = []
 continuar = True
 while continuar == True:
     acesso = False
@@ -91,7 +93,21 @@ while continuar == True:
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
         break
 
+    tentativa_atual_oponente = [random.randint(0,9),random.randint(0,9)]
+    while tentativa_atual_oponente in tentativas_oponente:
+        tentativa_atual_oponente = [random.randint(0,9),random.randint(0,9)]
+
+    tentativas_oponente.append(tentativa_atual_oponente)
+    tabuleiro_jogador = faz_jogada(tabuleiro_jogador,tentativa_atual_oponente[0],tentativa_atual_oponente[1])
+    if tabuleiro_jogador[tentativa_atual_oponente[0]][tentativa_atual_oponente[1]] == "X":
+        print(f'Seu oponente está atacando na linha {tentativa_atual_oponente[0]} e coluna {tentativa_atual_oponente[1]}')
+    
+    Quant_afundados_oponente = afundados(frota,tabuleiro_jogador)
+    
+    if Quant_afundados_oponente == 10:
+        print('Xi! O oponente derrubou toda a sua frota =(')
+        break
+
     if acesso == True:
         print(monta_tabuleiros(tabuleiro_jogador,tabuleiro_oponente))
 
-    #questao 8, no qual apenas o jogador joga contra o oponente, sem o oponente contra-atacar
